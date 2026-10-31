@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>DRishti | Diabetic Eye Screening</title>
+<meta name="description" content="DRishti: low-cost diabetic retinopathy screening with a phone, a 20D lens and an adapter. Team BioNexis, Hack for Social Cause.">
+<style>
+:root{--p:#0f766e;--onp:#fff;--bg:#f8fafc;--card:#fff;--tx:#1f2937;--mu:#64748b;--bd:#e2e8f0;--hd:#0f172a;--soft:#ecfeff;--ok:#16a34a;--wa:#b45309;--no:#dc2626;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--p:#2dd4bf;--onp:#06201d;--bg:#0b1220;--card:#111a2e;--tx:#e2e8f0;--mu:#94a3b8;--bd:#25324a;--hd:#f1f5f9;--soft:#0f2a2e;--ok:#4ade80;--wa:#fbbf24;--no:#f87171}}
+:root[data-theme="dark"]{--p:#2dd4bf;--onp:#06201d;--bg:#0b1220;--card:#111a2e;--tx:#e2e8f0;--mu:#94a3b8;--bd:#25324a;--hd:#f1f5f9;--soft:#0f2a2e;--ok:#4ade80;--wa:#fbbf24;--no:#f87171}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 76px)}
+body{margin:0;font-family:"Segoe UI",Tahoma,Geneva,Verdana,sans-serif;background:var(--bg);color:var(--tx);line-height:1.6}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:10}
+a{color:inherit;text-decoration:none}h1,h2,h3,p{margin-top:0}
+h1{font-size:clamp(2.1rem,6vw,3.6rem);line-height:1.1;letter-spacing:-.04em;color:var(--hd);margin-bottom:16px}
+h2{font-size:clamp(1.7rem,4vw,2.4rem);letter-spacing:-.03em;color:var(--hd);margin-bottom:12px}h3{color:var(--hd);margin-bottom:10px}
+p{color:var(--mu)}.wrap{width:min(1080px,calc(100% - 32px));margin:0 auto}.sec{padding:64px 0}
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:11;background:var(--bg);border-bottom:1px solid var(--bd)}
+.nav{display:flex;justify-content:space-between;align-items:center;min-height:68px;gap:12px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;color:var(--hd)}
+.mark{width:38px;height:38px;display:grid;place-items:center;border-radius:11px;background:var(--p);color:var(--onp)}
+.nav nav{display:flex;gap:20px;font-weight:600;color:var(--mu);font-size:.95rem}
+.tag{display:inline-block;border:1px solid var(--bd);background:var(--soft);color:var(--p);border-radius:999px;padding:6px 12px;font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;margin-bottom:16px}
+.btn{display:inline-flex;align-items:center;justify-content:center;border:0;border-radius:12px;padding:13px 22px;font:inherit;font-weight:700;cursor:pointer;background:var(--p);color:var(--onp)}
+.btn.alt{background:var(--card);color:var(--hd);border:1px solid var(--bd)}
+.row{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
+.grid{display:grid;gap:20px}.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:20px;padding:24px 22px}
+.num{font-size:2.2rem;font-weight:800;color:var(--p);line-height:1.1}
+.step{width:46px;height:46px;border-radius:12px;background:var(--soft);color:var(--p);display:grid;place-items:center;font-weight:800;margin-bottom:14px}
+label{display:block;font-weight:700;color:var(--hd);margin:14px 0 6px;font-size:.95rem}
+.in{width:100%;border:1px solid var(--bd);border-radius:12px;padding:12px 14px;background:var(--card);color:var(--hd);font:inherit}
+.hint{font-size:.9rem;margin:8px 0 0}#prev{display:none;width:100%;max-height:260px;object-fit:contain;border-radius:14px;margin-top:12px;background:#000}
+.mini{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+.badge{display:inline-block;border-radius:999px;padding:8px 16px;font-weight:800;font-size:1.1rem;border:2px solid currentColor}
+.Low{color:var(--ok)}.Medium{color:var(--wa)}.High{color:var(--no)}
+#res ul{padding-left:20px;color:var(--mu)}.note{font-size:.9rem;border-top:1px solid var(--bd);padding-top:12px;margin-top:16px}
+.foot{border-top:1px solid var(--bd);padding:26px 0;color:var(--mu);font-size:.92rem}
+@media(max-width:860px){.g2,.g3,.g4{grid-template-columns:1fr 1fr}.nav nav{display:none}.sec{padding:48px 0}}
+@media(max-width:600px){.g2,.g3,.g4{grid-template-columns:1fr}}
+@media print{.top,.row,#form{display:none}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap nav">
+<a class="brand" href="#"><span class="mark">D</span>DRishti</a>
+<nav aria-label="Main menu"><a href="#screen">Screen</a><a href="#how">How it works</a><a href="#why">Why it matters</a></nav>
+<a class="btn" href="#screen">Start</a></div></header>
+<main>
+<section class="sec" style="padding-top:52px"><div class="wrap">
+<div class="tag">Hack for Social Cause · Team BioNexis</div>
+<h1>Catch diabetic eye damage before vision is lost.</h1>
+<p style="font-size:1.12rem;max-width:640px">DRishti helps health workers screen diabetic patients near their homes. Take a retina photo with a phone, a 20D lens and an adapter, add a few health readings, and get a risk level with advice in Kannada.</p>
+<div class="row"><a class="btn" href="#screen">Start screening</a><a class="btn alt" href="#how">See how it works</a></div>
+</div></section>
+
+<section class="sec" id="screen" style="padding-top:20px"><div class="wrap">
+<h2>Screen a patient</h2>
+<p>Everything runs in your browser. Photos are never uploaded or stored.</p>
+<div class="grid g2" style="margin-top:22px;align-items:start">
+<div class="card" id="form">
+<h3>1. Retina photo</h3>
+<input class="in" type="file" id="file" accept="image/*">
+<img id="prev" alt="Selected retina photo">
+<p class="hint" id="q">Choose the sharpest frame from your short video.</p>
+<h3 style="margin-top:22px">2. Patient readings</h3>
+<div class="mini">
+<div><label for="sugar">Sugar (mg/dL)</label><input class="in" id="sugar" type="number" min="0" inputmode="numeric"></div>
+<div><label for="sbp">Top BP</label><input class="in" id="sbp" type="number" min="0" inputmode="numeric"></div>
+<div><label for="yrs">Diabetes (years)</label><input class="in" id="yrs" type="number" min="0" inputmode="numeric"></div>
+</div>
+<h3 style="margin-top:22px">3. Image grade</h3>
+<select class="in" id="grade"><option value="0">No diabetic retinopathy</option><option value="2">Mild</option><option value="5">Severe</option></select>
+<p class="hint" id="gh">Demo mode: no AI model is connected, so pick the grade by hand. The code is ready to read the grade from a trained Google Teachable Machine model instead.</p>
+<label for="lang">Result language</label>
+<select class="in" id="lang"><option value="kn">ಕನ್ನಡ (Kannada)</option><option value="en">English</option></select>
+<div class="row"><button class="btn" id="go" type="button">Analyse</button><button class="btn alt" id="demo" type="button">Try a sample case</button></div>
+</div>
+<div class="card" id="res"><h3>Result</h3><p>Your result will appear here.</p></div>
+</div></div></section>
+
+<section class="sec" id="how"><div class="wrap">
+<h2>How it works</h2>
+<div class="grid g4" style="margin-top:22px">
+<article class="card"><div class="step">01</div><h3>Capture</h3><p>Phone camera with a 20D lens held by an adapter. A trained person dilates the pupil.</p></article>
+<article class="card"><div class="step">02</div><h3>Upload</h3><p>Pick the sharpest frame. The site checks for blur, glare and darkness.</p></article>
+<article class="card"><div class="step">03</div><h3>Analyse</h3><p>The image grade is combined with sugar, blood pressure and years of diabetes.</p></article>
+<article class="card"><div class="step">04</div><h3>Refer</h3><p>A risk level and advice appear in Kannada. A doctor confirms every referral.</p></article>
+</div></div></section>
+
+<section class="sec" id="why"><div class="wrap">
+<h2>Why it matters</h2>
+<div class="grid g3" style="margin-top:22px">
+<article class="card"><div class="num">101 M</div><p>Indians live with diabetes (ICMR-INDIAB, 2023).</p></article>
+<article class="card"><div class="num">16.9%</div><p>of diabetics aged 50+ have retinopathy; 3.6% have the sight-threatening form (National Survey 2015-19).</p></article>
+<article class="card"><div class="num">69%</div><p>of diabetics in a Pune survey had never had a retinal exam (Kulkarni et al., 2019).</p></article>
+</div></div></section>
+</main>
+<footer class="foot"><div class="wrap">© 2026 DRishti · Team BioNexis · Hack for Social Cause<br>Screening aid only, not a medical diagnosis. The risk rules are a simple demo and are not clinically validated.</div></footer>
+
+<script>
+// To use a trained Google Teachable Machine model, paste its URL here (must end with "/").
+// Class names must be: No DR, Mild, Severe. Works when the site is hosted on your own page.
+const MODEL_URL = "";
+const $ = id => document.getElementById(id);
+const TX = {
+  en: {Low:"Low risk", Medium:"Medium risk", High:"High risk",
+    adv:{Low:"Get an eye check once a year.", Medium:"See an eye doctor within 3–6 months.", High:"See an eye specialist as soon as possible."},
+    dis:"Screening aid only. A doctor confirms every result.", why:"Why this result", sc:"Score"},
+  kn: {Low:"ಕಡಿಮೆ ಅಪಾಯ", Medium:"ಮಧ್ಯಮ ಅಪಾಯ", High:"ಹೆಚ್ಚಿನ ಅಪಾಯ",
+    adv:{Low:"ವರ್ಷಕ್ಕೊಮ್ಮೆ ಕಣ್ಣಿನ ತಪಾಸಣೆ ಮಾಡಿಸಿ.", Medium:"3–6 ತಿಂಗಳಲ್ಲಿ ಕಣ್ಣಿನ ವೈದ್ಯರನ್ನು ಭೇಟಿ ಮಾಡಿ.", High:"ತಕ್ಷಣ ಕಣ್ಣಿನ ತಜ್ಞರನ್ನು ಭೇಟಿ ಮಾಡಿ."},
+    dis:"ಇದು ತಪಾಸಣೆಗೆ ಸಹಾಯಕ ಸಾಧನ, ರೋಗನಿರ್ಣಯವಲ್ಲ. ವೈದ್ಯರು ಖಚಿತಪಡಿಸುತ್ತಾರೆ.", why:"ಈ ಫಲಿತಾಂಶಕ್ಕೆ ಕಾರಣ", sc:"ಅಂಕ"}
+};
+let tm = null, hasPhoto = false;
+
+// Quick image-quality guide: brightness and sharpness (not calibrated, only a hint)
+function quality(img){
+  const w = 200, h = Math.max(1, Math.round(200 * img.naturalHeight / img.naturalWidth));
+  const c = document.createElement("canvas"); c.width = w; c.height = h;
+  const x = c.getContext("2d"); x.drawImage(img, 0, 0, w, h);
+  const d = x.getImageData(0, 0, w, h).data, g = new Float32Array(w * h); let m = 0;
+  for(let i = 0; i < w * h; i++){ g[i] = .299*d[4*i] + .587*d[4*i+1] + .114*d[4*i+2]; m += g[i]; }
+  m /= w * h; let s = 0, n = 0;
+  for(let y = 1; y < h-1; y++) for(let k = 1; k < w-1; k++){ const i = y*w + k, l = 4*g[i] - g[i-1] - g[i+1] - g[i-w] - g[i+w]; s += l*l; n++; }
+  const v = s / n;
+  if(m < 35) return "Image looks too dark. Retake with a little more light.";
+  if(m > 200) return "Too bright or glare. Soften the flash and retake.";
+  if(v < 30) return "Image may be blurry. Hold steady and retake.";
+  return "Image quality looks OK.";
+}
+
+$("file").addEventListener("change", e => {
+  const f = e.target.files[0]; if(!f) return;
+  const p = $("prev"); p.style.display = "block"; p.src = URL.createObjectURL(f);
+  p.onload = () => { hasPhoto = true; $("q").textContent = quality(p); predict(); };
+});
+
+function ls(u){ return new Promise((ok, no) => { const s = document.createElement("script"); s.src = u; s.onload = ok; s.onerror = no; document.head.appendChild(s); }); }
+async function loadModel(){
+  if(!MODEL_URL) return;
+  try{
+    await ls("https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js");
+    await ls("https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8.5/dist/teachablemachine-image.min.js");
+    tm = await tmImage.load(MODEL_URL + "model.json", MODEL_URL + "metadata.json");
+    $("gh").textContent = "AI model connected. The grade is filled in from the photo; you can still correct it.";
+  }catch(e){ tm = null; }
+}
+async function predict(){
+  if(!tm || !hasPhoto) return;
+  try{
+    const r = await tm.predict($("prev")); r.sort((a, b) => b.probability - a.probability);
+    const k = {"No DR":"0", "Mild":"2", "Severe":"5"}[r[0].className];
+    if(k !== undefined) $("grade").value = k;
+  }catch(e){}
+}
+loadModel();
+
+// Sample case so judges can try the site without a real photo
+$("demo").addEventListener("click", () => {
+  const c = document.createElement("canvas"); c.width = c.height = 400; const x = c.getContext("2d");
+  x.fillStyle = "#000"; x.fillRect(0, 0, 400, 400);
+  const g = x.createRadialGradient(200, 200, 20, 200, 200, 190); g.addColorStop(0, "#e8743b"); g.addColorStop(1, "#7a1f12");
+  x.fillStyle = g; x.beginPath(); x.arc(200, 200, 190, 0, 7); x.fill();
+  x.strokeStyle = "#a32a18"; x.lineWidth = 3;
+  [-130, -70, -20, 40, 100, 150].forEach(a => { x.beginPath(); x.moveTo(290, 190); x.quadraticCurveTo(200, 190 + a * 0.6, 80, 190 + a); x.stroke(); });
+  x.fillStyle = "#f6d77a"; x.beginPath(); x.arc(290, 190, 32, 0, 7); x.fill();
+  x.fillStyle = "#4a0d08"; [[170, 150], [140, 230], [210, 260]].forEach(p => { x.beginPath(); x.arc(p[0], p[1], 6, 0, 7); x.fill(); });
+  x.fillStyle = "#fff"; x.font = "14px sans-serif"; x.fillText("Sample illustration, not a real retina", 80, 385);
+  const p = $("prev"); p.style.display = "block";
+  p.onload = () => { hasPhoto = true; $("q").textContent = "Sample illustration loaded."; $("sugar").value = 210; $("sbp").value = 145; $("yrs").value = 8; $("grade").value = "2"; $("go").click(); };
+  p.src = c.toDataURL("image/png");
+});
+
+$("go").addEventListener("click", () => {
+  const R = $("res"), L = TX[$("lang").value];
+  const sg = parseFloat($("sugar").value), bp = parseFloat($("sbp").value), yr = parseFloat($("yrs").value), gr = +$("grade").value;
+  if(!hasPhoto || isNaN(sg) || isNaN(bp) || isNaN(yr)){
+    R.innerHTML = "<h3>Result</h3><p>Please add a retina photo and fill in all three readings.</p>"; return;
+  }
+  let sc = gr; const why = [];
+  why.push("Image grade: " + $("grade").selectedOptions[0].text + " (+" + gr + ")");
+  const a = sg >= 250 ? 2 : sg >= 180 ? 1 : 0; if(a) why.push("High blood sugar (+" + a + ")");
+  const b = bp >= 140 ? 1 : 0; if(b) why.push("High blood pressure (+1)");
+  const c = yr >= 10 ? 2 : yr >= 5 ? 1 : 0; if(c) why.push("Years with diabetes (+" + c + ")");
+  sc += a + b + c;
+  const lv = (gr >= 5 || sc >= 6) ? "High" : sc >= 3 ? "Medium" : "Low";
+  R.innerHTML = '<h3>Result</h3><span class="badge ' + lv + '">' + L[lv] + '</span>' +
+    '<p style="margin-top:16px;color:var(--hd);font-weight:700;font-size:1.1rem">' + L.adv[lv] + '</p>' +
+    '<p><b>' + L.sc + ': ' + sc + '</b></p><p style="margin-bottom:4px">' + L.why + ' (English)</p><ul>' +
+    why.map(w => "<li>" + w + "</li>").join("") + '</ul><p class="note">' + L.dis + '</p>' +
+    '<div class="row"><button class="btn alt" type="button" onclick="window.print()">Print result</button></div>';
+});
+</script>
+</body>
+</html>
